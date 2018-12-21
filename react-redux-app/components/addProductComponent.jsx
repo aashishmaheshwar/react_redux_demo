@@ -41,6 +41,8 @@ class NewProductComponent extends Component {
     this.refs.productname.value = "";
   }
 
+  delete() {}
+
   componentDidUpdate() {
     if (
       this.props.SelectedRow.productId === "" &&
@@ -74,30 +76,46 @@ class NewProductComponent extends Component {
     return (
       //   <form action="" className="form-group">
       <div className="container">
-        <label htmlFor="ProdId" className="form-control" />
-        <input
-          type="text"
-          ref="productid"
-          name="ProdId"
-          className="form-control"
-          //   value={this.props.SelectedRow.productId}
-          //   onChange={this.handleProductIdChange.bind(this)}
-        />
-        <label htmlFor="ProdName" className="form-control" />
-        <input
-          type="text"
-          ref="productname"
-          name="ProdName"
-          className="form-control"
-          //   value={this.props.SelectedRow.productName}
-          //   onChange={this.handleProductNameChange.bind(this)}
-        />
+        <br />
+        <br />
+        <div className="row row-fluid">
+          <label htmlFor="ProdId" className="col-md-6">
+            Product ID
+          </label>
+          <input
+            type="text"
+            ref="productid"
+            name="ProdId"
+            className="col-md-6"
+            //   value={this.props.SelectedRow.productId}
+            //   onChange={this.handleProductIdChange.bind(this)}
+          />
+        </div>
+        <div className="row row-fluid">
+          <label htmlFor="ProdName" className="col-md-6">
+            Product Name
+          </label>
+          <input
+            type="text"
+            ref="productname"
+            name="ProdName"
+            className="col-md-6"
+            //   value={this.props.SelectedRow.productName}
+            //   onChange={this.handleProductNameChange.bind(this)}
+          />
+        </div>
         <br />
         <input
           type="button"
           value="save"
           onClick={this.save.bind(this)}
-          className="form-control"
+          className="btn btn-default"
+        />
+        <input
+          type="button"
+          value="delete"
+          onClick={this.delete.bind(this)}
+          className="btn btn-danger"
         />
       </div>
       //   </form>

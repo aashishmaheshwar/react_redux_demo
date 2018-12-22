@@ -2,6 +2,7 @@
 
 export const ADD_PRODUCT = "ADD_PRODUCT";
 export const UPDATE_PRODUCT = "UPDATE_PRODUCT";
+export const DELETE_PRODUCT = "DELETE_PRODUCT";
 
 // 2. define an action creator
 // the method that contains the logic for the ACTION
@@ -25,5 +26,12 @@ export function updateProduct(oldproduct, newproduct) {
     type: UPDATE_PRODUCT,
     oldproduct,
     newproduct
+  };
+}
+
+export function deleteProduct(productToDelete) {
+  return {
+    type: DELETE_PRODUCT,
+    productToDelete
   };
 }

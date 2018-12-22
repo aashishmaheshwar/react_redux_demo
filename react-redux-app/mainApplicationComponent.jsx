@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 // 1. import action creator
-import { addProduct, updateProduct } from "./actions/actions";
+import { addProduct, updateProduct, deleteProduct } from "./actions/actions";
 // 2. import "connect" to connect react with redux i.e. props/state to store
 import { connect } from "react-redux";
 import NewProductComponent from "./components/addProductComponent.jsx";
@@ -50,6 +50,7 @@ class MainApplicationComponent extends Component {
           callupdateCB={(oldRow, newRow) =>
             dispatch(updateProduct(oldRow, newRow))
           }
+          deleteCB={rowToDelete => dispatch(deleteProduct(rowToDelete))}
         />
         <hr />
         <ProductListComponent

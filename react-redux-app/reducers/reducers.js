@@ -1,5 +1,9 @@
 // import action
-import { ADD_PRODUCT, UPDATE_PRODUCT } from "./../actions/actions";
+import {
+  ADD_PRODUCT,
+  UPDATE_PRODUCT,
+  DELETE_PRODUCT
+} from "./../actions/actions";
 // import combine reducer
 import { combineReducers } from "redux";
 // write reducer functions aka pure functions
@@ -28,6 +32,17 @@ export function updateProduct(state, action) {
   }
 }
 
+export function deleteProduct(state, action) {
+  switch (action.type) {
+    case DELETE_PRODUCT:
+      return {
+        productToDelete: action.productToDelete
+      };
+    default:
+      return state;
+  }
+}
+
 /**
  * the reducer function to list all products
  * this will call the addProduct() reducer function
@@ -48,6 +63,16 @@ export function listproductsreducer(state = [], action) {
       );
       console.log("the statetemp is" + JSON.stringify(stateTemp));
       return [...stateTemp, { product: oldAndNew.newproduct }];
+    }
+    case DELETE_PRODUCT: {
+      let stateTemp = [...state];
+      const rowToDelete = deleteProduct(undefined, action).productToDelete;
+      stateTemp = stateTemp.filter(
+        item =>
+          item.product.productId !== rowToDelete.productId ||
+          item.product.productName !== rowToDelete.productName
+      );
+      return [...stateTemp];
     }
     default:
       return state;

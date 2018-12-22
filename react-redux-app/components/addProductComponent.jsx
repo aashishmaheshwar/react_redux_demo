@@ -41,7 +41,12 @@ class NewProductComponent extends Component {
     this.refs.productname.value = "";
   }
 
-  delete() {}
+  delete() {
+    this.props.deleteCB(this.props.SelectedRow);
+    this.props.EmptyRowAfterSave(this.props.SelectedRow);
+    this.refs.productid.value = "";
+    this.refs.productname.value = "";
+  }
 
   componentDidUpdate() {
     if (
